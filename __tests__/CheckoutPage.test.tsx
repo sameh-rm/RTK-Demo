@@ -18,7 +18,7 @@ jest.mock('next/navigation', () => ({
 
 describe('test Checkout Page', () => {
   const store = setupStore({});
-  test("test Render Checkout Page", async () => {
+  test('test Render Checkout Page', async () => {
     renderWithProviders(await waitFor(() => <CheckoutPage />), {
       store
     });

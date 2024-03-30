@@ -36,9 +36,9 @@ export function renderWithProviders(
           productName: ''
         }
       },
-      cart:{
-        items:[{...testProduct, quantity:1}],
-        count:1
+      cart: {
+        items: [{ ...testProduct, quantity: 1 }],
+        count: 1
       }
     },
     // Automatically create a store instance if no store was passed in

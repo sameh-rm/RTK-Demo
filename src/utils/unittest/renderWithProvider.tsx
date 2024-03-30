@@ -12,6 +12,16 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: Partial<RootState>;
   store?: AppStore;
 }
+export const testProduct: Product = {
+  name: 'Test Product2',
+  description:
+    'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit voluptates enim, neque molestias quas at praesentium doloribus facere voluptate, beatae delectus iste explicabo laboriosam numquam ullam atque tempora accusantium quae?',
+  imageUrl:
+    '/images/wd-elements-portable-1-2tb-front.png.wdthumb.1280.1280.webp',
+  price: 411,
+  slug: 'test-prorduct2',
+  id: 2
+};
 
 export function renderWithProviders(
   ui: React.ReactElement,
@@ -25,6 +35,10 @@ export function renderWithProviders(
           minPrice: 0,
           productName: ''
         }
+      },
+      cart:{
+        items:[{...testProduct, quantity:1}],
+        count:1
       }
     },
     // Automatically create a store instance if no store was passed in

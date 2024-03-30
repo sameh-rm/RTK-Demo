@@ -9,6 +9,7 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test-cov": "jest -config=jest.config.js --coverage --all",
     "format": "npx prettier --write .",
     "prepare": "husky"
   },

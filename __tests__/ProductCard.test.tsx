@@ -3,7 +3,7 @@ import { renderWithProviders } from '@/utils/unittest/renderWithProvider';
 import ProductCard from '@/components/products/ProductCard';
 
 describe('test ProductCard', () => {
-  const { container, getByText, getByTestId } = renderWithProviders(
+  const { getByText } = renderWithProviders(
     <ProductCard
       description="test"
       id={1}

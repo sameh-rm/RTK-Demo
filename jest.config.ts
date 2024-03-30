@@ -10,7 +10,7 @@ const config: Config = {
   testEnvironmentOptions: {
     customExportConditions: ['']
   },
-  setupFilesAfterEnv: ["@testing-library/jest-dom", "./jest.setup.ts"],
+  setupFilesAfterEnv: ['@testing-library/jest-dom', './jest.setup.ts'],
   setupFiles: ['./jest.polyfills.js'],
   modulePaths: ['<rootDir>']
 };

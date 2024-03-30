@@ -33,11 +33,7 @@ const ShopPage = () => {
   return (
     <>
       <div className="isErrorIsLoading">
-        {error && (
-          <p>
-            {error?.status!}:{error?.error!}
-          </p>
-        )}
+        {error && <p>An error occured</p>}
         {isLoading && <Loader />}
       </div>
       <div className="lg:container mx-auto px-4 py-8">

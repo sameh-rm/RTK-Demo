@@ -38,10 +38,8 @@ export function renderWithProviders(
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
 }
 
-
-
 export function renderHookWithProviders(
-  hook: ()=> void,
+  hook: () => void,
   {
     preloadedState = {
       products: {

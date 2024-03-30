@@ -5,6 +5,7 @@ import { StoreProvicder } from '@/components/redux/StoreProvicder';
 import Navbar from '@/components/layout/NavBar';
 import { Suspense } from 'react';
 import Loader from '@/components/layout/Loader';
+import Footer from '@/components/layout/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -32,6 +33,8 @@ export default function RootLayout({
           <Navbar />
           <Suspense fallback={<Loader />}>{children}</Suspense>
         </StoreProvicder>
+
+        <Footer/>
       </body>
     </html>
   );

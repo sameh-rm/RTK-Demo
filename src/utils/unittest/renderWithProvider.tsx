@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { render } from '@testing-library/react';
+import { render, renderHook } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
 import { Provider } from 'react-redux';
 
@@ -36,4 +36,31 @@ export function renderWithProviders(
     return <Provider store={store}>{children}</Provider>;
   }
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
+}
+
+
+
+export function renderHookWithProviders(
+  hook: ()=> void,
+  {
+    preloadedState = {
+      products: {
+        list: productsList,
+        tempList: productsList,
+        filters: {
+          maxPrice: 0,
+          minPrice: 0,
+          productName: ''
+        }
+      }
+    },
+    // Automatically create a store instance if no store was passed in
+    store = setupStore(preloadedState),
+    ...renderOptions
+  }: ExtendedRenderOptions = {}
+) {
+  function Wrapper({ children }: PropsWithChildren<{}>): JSX.Element {
+    return <Provider store={store}>{children}</Provider>;
+  }
+  return { store, ...renderHook(hook, { wrapper: Wrapper, ...renderOptions }) };
 }

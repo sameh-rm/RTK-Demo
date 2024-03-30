@@ -1,11 +1,9 @@
-
-import { http } from 'msw'
-import products from "../../../public/data/products.json"
+import products from '../../../public/data/products.json';
+import { HOST } from '../constants';
+import { http, HttpResponse } from 'msw';
 
 export const handlers = [
-    http.get('/data/products.json', (req, res, ctx) => {
-
-    // successful response
-    return res(ctx.status(200), ctx.json(products), ctx.delay(30))
+  http.get(HOST + '/data/products.json', ({ request }) => {
+    return HttpResponse.json(products);
   })
-]
+];

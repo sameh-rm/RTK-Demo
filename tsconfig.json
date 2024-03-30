@@ -28,7 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "jest.setup.ts"
-, "jest.polyfills.js"  ],
+    "jest.setup.ts",
+    "jest.polyfills.js"
+  ],
   "exclude": ["node_modules"]
 }

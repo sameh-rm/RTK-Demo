@@ -13,15 +13,15 @@ import NoProductsMessage from '@/components/layout/filters/NoProductsMessage';
 import Loader from '@/components/layout/Loader';
 
 const ShopPage = () => {
-  const { data, error, isLoading, isSuccess } = useProductsQuery([], {
-    refetchOnReconnect: true
-  });
-      const dispatch = useAppDispatch();
-      const products = useAppSelector(getProductsSelector);
-     const filters = useAppSelector(getFiltersSelector);
+  const { data, error, isLoading, isSuccess } = useProductsQuery([], {});
+  const dispatch = useAppDispatch();
+  const products = useAppSelector(getProductsSelector);
+  const filters = useAppSelector(getFiltersSelector);
   // test format
   useEffect(() => {
-    dispatch(setProducts(data || []));
+    if (data) {
+      dispatch(setProducts(data));
+    }
   }, [data, dispatch]);
 
   useEffect(() => {
@@ -33,7 +33,11 @@ const ShopPage = () => {
   return (
     <>
       <div className="isErrorIsLoading">
-        {error && <p>An error occured</p>}
+        {error && (
+          <p>
+            {error?.status!}:{error?.error!}
+          </p>
+        )}
         {isLoading && <Loader />}
       </div>
       <div className="lg:container mx-auto px-4 py-8">

@@ -30,9 +30,11 @@ export default function RootLayout({
 
       <body className={inter.className}>
         <main>
-          <div style={{
-            height: "82vh"
-          }}>
+          <div
+            style={{
+              height: '80vh'
+            }}
+          >
             <StoreProvicder>
               <Navbar />
               <Suspense fallback={<Loader />}>{children}</Suspense>

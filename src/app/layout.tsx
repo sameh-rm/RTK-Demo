@@ -29,12 +29,17 @@ export default function RootLayout({
       </head>
 
       <body className={inter.className}>
-        <StoreProvicder>
-          <Navbar />
-          <Suspense fallback={<Loader />}>{children}</Suspense>
-        </StoreProvicder>
-
-        <Footer/>
+        <main>
+          <div style={{
+            height: "82vh"
+          }}>
+            <StoreProvicder>
+              <Navbar />
+              <Suspense fallback={<Loader />}>{children}</Suspense>
+            </StoreProvicder>
+          </div>
+          <Footer />
+        </main>
       </body>
     </html>
   );

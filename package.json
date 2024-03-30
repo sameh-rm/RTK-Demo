@@ -10,7 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "format": "npx prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.2",

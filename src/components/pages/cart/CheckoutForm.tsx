@@ -9,6 +9,7 @@ import { useFormik } from 'formik';
 import { useRouter } from 'next/navigation';
 import CustomInput from '@/components/forms/CustomInput';
 import * as Yup from 'yup';
+import logger from '@/utils/logger';
 
 const validationSchema = Yup.object().shape({
   billing_details: Yup.object().shape({
@@ -25,7 +26,11 @@ const validationSchema = Yup.object().shape({
   })
 });
 
-const CheckoutForm = () => {
+const CheckoutForm = ({
+  setIsLoading
+}: {
+  setIsLoading: (isLoading: boolean) => void;
+}) => {
   const stripe = useStripe();
   const elements = useElements();
   const cartTotal = useAppSelector(getCartTotal);
@@ -57,7 +62,6 @@ const CheckoutForm = () => {
     if (!stripe || !elements) {
       return;
     }
-    console.log('values', values);
     const result = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement) as StripeCardElement,
@@ -65,15 +69,17 @@ const CheckoutForm = () => {
     });
 
     if (result.error) {
-      console.error(result.error.message);
+      logger.error(result.error.message);
       Notify.failure(result.error.message!);
     } else {
       Notify.success(
         `Payment Done, with payment ID {${result.paymentMethod.id}}`
       );
+      setIsLoading && setIsLoading(true);
       setTimeout(() => {
         router.push('/');
         dispatch(createOrder({ paymentId: result.paymentMethod.id }));
+        setIsLoading && setIsLoading(false);
       }, 2000);
       // Send paymentMethod.id to your server to complete the payment
     }

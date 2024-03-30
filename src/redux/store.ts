@@ -20,16 +20,16 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const setupStore = (preloadedState: Partial<RootState> | any) =>
+export const setupStore = (preloadedState?: Partial<RootState> | any) =>
   configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false
-    }).concat(productsApi.middleware),
-    preloadedState,
+      getDefaultMiddleware({
+        serializableCheck: false
+      }).concat(productsApi.middleware),
+    preloadedState
   });
-export const store = setupStore({ });
+export const store = setupStore({});
 setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof rootReducer>;

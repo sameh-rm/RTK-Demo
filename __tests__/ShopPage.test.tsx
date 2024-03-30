@@ -1,6 +1,8 @@
 import '../src/setupTests';
-import { screen, waitFor } from '@testing-library/react';
-import { renderWithProviders } from '@/utils/unittest/renderWithProvider';
+import {  screen, waitFor } from '@testing-library/react';
+import {
+  renderWithProviders
+} from '@/utils/unittest/renderWithProvider';
 import ShopPage from '@/components/pages/shop/ShopPage';
 
 describe('test Shop Page', () => {

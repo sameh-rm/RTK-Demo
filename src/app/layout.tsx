@@ -32,7 +32,7 @@ export default function RootLayout({
         <main>
           <div
             style={{
-              height: '80vh'
+              minHeight: '80vh'
             }}
           >
             <StoreProvicder>

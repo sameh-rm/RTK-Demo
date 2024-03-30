@@ -20,7 +20,7 @@ const CheckoutPage = () => {
       </div>
       <div className=" w-full">
         <Elements stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm setIsLoading={setIsLoading}/>
         </Elements>
       </div>
     </div>
